@@ -1,0 +1,22 @@
+<h1>Todoリスト</h1>
+<table>
+  <td><% if @show %>
+             <%= link_to 'すべて', tasks_path(:show=>'all'), class: 'btn btn-primary btn-sm ml-2' %>
+             <%= link_to '未完了', tasks_path, class: 'btn btn-outline-primary btn-sm ml-1' %>
+            <% else %>
+             <%= link_to 'すべて', tasks_path(:show=>'all'), class: 'btn btn-outline-primary btn-sm ml-2'%>
+            <% end %></td>
+  <tbody>
+    <% @tasks.each do |t| %>
+      <tr>
+        <td><%= t.limit_time.strftime("%Y-%m-%d %H:%M") %></td>
+        <td><%= t.task %></td>
+        <td><% if t.completed == 0 %>未完了
+            <% else %>完了<% end %></td>
+        <td><%= link_to '編集', edit_task_path(t) %></td>
+        <td><%= link_to '削除', task_path(t), method: :delete %></td>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to '追加', new_task_path %>
+<%= link_to 'カレンダーに戻る', blogs_path %>

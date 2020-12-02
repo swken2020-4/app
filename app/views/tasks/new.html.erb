@@ -1,0 +1,10 @@
+<h1>新規追加</h1>
+<%= form_for(@task) do |f| %>
+  <div><%= f.label :task %></div>
+  <div><%= f.text_field :task %></div>
+  <div><%= f.label :limit_time %></div>
+  <div><%= f.datetime_select :limit_time %></div>
+  <%=f.hidden_field :completed,:value => 0, id: 'task_completed' %>
+  <div><%= f.submit %></div>
+<% end %>
+<%= link_to '戻る', tasks_path %>
