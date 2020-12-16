@@ -4,12 +4,43 @@
     <title>App</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+<script>
+  window.OneSignal = window.OneSignal || [];
+  OneSignal.push(function() {
+    OneSignal.init({
+      appId: "ddb42720-76fa-4fb2-a566-dfb08fb5d6cb",
+    });
+  });
+</script>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+<body>
 
-  <body>
-    <%= yield %>
-  </body>
+  <header>
+    <nav>
+      <% if user_signed_in? %> 
+        Logged in as <strong><%= current_user.email %></strong>.
+        <%= link_to 'プロフィール変更', edit_user_registration_path %> |
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>|
+        <%= link_to "DM", rails_admin_path %>
+        <%= link_to "カレンダー", blogs_path %>
+        <%= link_to "就活相談", new_contact_path %>
+        <%= link_to "支援課", rails_admin_path %>
+        
+        
+        
+      <% else %>
+        <%= link_to "サインイン", new_user_registration_path %> |
+        <%= link_to "ログイン", new_user_session_path %>
+      <% end %>
+    </nav>
+  </header>
+
+
+
+  <%= yield %>
+</body>
+ 
 </html>

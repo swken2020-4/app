@@ -1,0 +1,10 @@
+<h5>就活相談</h5>
+
+
+<%= form_with model: @contact do |f| %>
+     <%= f.label :お名前%><br>
+     <%= f.text_field :name %><br>
+     <%= f.label :相談内容%><br>
+     <%= f.text_field :message %><br>
+ <%= f.submit '送信' %>
+<% end %>

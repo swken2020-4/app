@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  root to: 'blogs#index'
+  resources :posts
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  root to: 'home#index'
+  devise_for :users
   resources :blogs
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :users
+  resources :contacts
 end
