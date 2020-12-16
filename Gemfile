@@ -6,11 +6,14 @@ ruby '2.6.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.4'
 # Use sqlite3 as the database for Active Record
-group :development, :test do
-gem 'sqlite3'
+#gem 'sqlite3', group: :development
+#gem 'pg', '0.21.0', group: :production
+group :development, :test do # 開発環境、テスト環境
+  gem 'sqlite3' # sqlite3
 end
-group :production do
-gem 'pg', '0.20.0'
+
+group :production do # 本番環境
+  gem 'pg' # PostgreSQL
 end
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
