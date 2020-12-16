@@ -11,8 +11,7 @@
       <tr>
         <td><%= t.limit_time.strftime("%Y-%m-%d %H:%M") %></td>
         <td><%= t.task %></td>
-        <td><% if t.completed == 0 %>
-        <%= link_to'○',task_path(id: task_compelete),method: :post%>
+        <td><% if t.completed == 0 %>未完了
             <% else %>完了<% end %></td>
         <td><%= link_to '編集', edit_task_path(t) %></td>
         <td><%= link_to '削除', task_path(t), method: :delete %></td>
