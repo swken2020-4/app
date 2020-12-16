@@ -2,6 +2,20 @@
 
 <h1>就活カレンダー</h1>
 
+<%= link_to 'カレンダーに追加', new_blog_path %>
+<%= link_to 'Todoリストへ', tasks_path %> 
+
+<%= month_calendar events: @blogs do |date, blogs| %>
+  <%= date.day %>
+
+  <% blogs.each do |blog| %>
+    <div>
+      <%= link_to blog.title, blog %>
+    </div>
+  <% end %>
+<% end %>
+
+
 <table>
   <thead>
     <tr>
@@ -23,18 +37,3 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to '登録', new_blog_path %>
-<%= link_to 'Todoリスト', tasks_path %>
-
-<%= month_calendar events: @blogs do |date, blogs| %>
-  <%= date.day %>
-
-  <% blogs.each do |blog| %>
-    <div>
-      <%= link_to blog.title, blog %>
-    </div>
-  <% end %>
-<% end %>
